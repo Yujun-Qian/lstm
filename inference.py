@@ -64,7 +64,7 @@ from tensorflow import keras
 
 batch_size = 64  # Batch size for training.
 epochs = 100  # Number of epochs to train for.
-latent_dim = 1024  # Latent dimensionality of the encoding space.
+latent_dim = 256 # Latent dimensionality of the encoding space.
 num_samples = 100000  # Number of samples to train on.
 # Path to the data txt file on disk.
 data_path = "cmn.txt"
@@ -263,13 +263,13 @@ for seq_index in range(1):
     input_seq[0, -8, input_token_index["h"]] = 1.0
     input_seq[0, -9, input_token_index["i"]] = 1.0
     input_seq[0, -10, input_token_index["m"]] = 1.0
-    #input_seq[0, -11, input_token_index["."]] = 1.0
-    input_seq[0, 0:-11, input_token_index[" "]] = 1.0
+    input_seq[0, -11, input_token_index["."]] = 1.0
+    input_seq[0, 0:-12, input_token_index[" "]] = 1.0
     print("Shape of input_seq is: ", input_seq.shape)
 
-    input_seq1 = encoder_input_data[288 : 288 + 1]    
-    print("Shape of input_seq1 is: ", input_seq1.shape)
+    #input_seq1 = encoder_input_data[288 : 288 + 1]    
+    #print("Shape of input_seq1 is: ", input_seq1.shape)
     decoded_sentence = decode_sequence(input_seq)
     print("-")
-    print("Input sentence:", input_texts[288])
+    #print("Input sentence:", input_texts[288])
     print("Decoded sentence:", decoded_sentence)
